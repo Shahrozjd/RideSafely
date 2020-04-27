@@ -18,7 +18,9 @@ firebase = pyrebase.initialize_app(config)
 db = firebase.database()
 auth = firebase.auth()
 storage = firebase.storage()
+
 value = db.child("Challans").shallow().get()
+
 valdata = list(value.val())
 print("*****"+str(valdata))
 
