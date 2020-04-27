@@ -33,7 +33,10 @@
     {% if user.is_authenticated %}
       <!-- The sidebar -->
       <div class="sidebar">
-        <img style="width: 180px; height:135px; margin-right:10px;margin-left:10px; border-radius: 2px;" src="{% static 'account/Screenshot_2.png' %}">
+        <img style="width: 150px; height:100px;  border-radius: 2px; display: block;
+        margin-left: auto;
+        margin-right: auto;" src="{% static 'account/Screenshot_2.png' %}">
+       
         <a class="navcontent" href="{% url 'home' %}"><i class="fa fa-fw fa-home"></i> Home</a>
         <a class="navcontent" href="#challan"><i class="fa fa-circle-o-notch fa-spin"></i> Challans</a>
         <a class="navcontent" href="{% url 'profile' %}"><i class="fa fa-fw fa-user"></i> Profile</a>
