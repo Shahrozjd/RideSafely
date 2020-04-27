@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+      <link rel="stylesheet" type="text/css" href="{% static 'account/main.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'account/homest.css' %}">
+       <link rel="icon" href="{% static 'account/icon_path.png' %}" type="image/x-icon">
+    <title>Ride Safely</title>
+  </head>
+
+  <body>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+
+  <header class="site-header">
+
+
+
+
+
+    
+      <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
+
+        
+    {% if user.is_authenticated %}
+      <!-- The sidebar -->
+      <div class="sidebar">
+        <img style="width: 190px; height:135px; margin-right:5px;margin-left:5px; border-radius: 5px;" src="{% static 'account/Screenshot_2.png' %}">
+        <a class="navcontent" href="{% url 'home' %}"><i class="fa fa-fw fa-home"></i> Home</a>
+        <a class="navcontent" href="#challan"><i class="fa fa-circle-o-notch fa-spin"></i> Challans</a>
+        <a class="navcontent" href="{% url 'profile' %}"><i class="fa fa-fw fa-user"></i> Profile</a>
+        <a class="navcontent" href="#about"><i class="fa fa-fw fa-info"></i> About</a>
+        <a class="navcontent"  href="#contact"><i class="fa fa-fw fa-phone"></i> Contact</a>
+      </div>
+
+    {% else %}  
+    <a style="font-size: 30px;" class="navbar-brand mr-4" href="{% url 'home' %}">Ride Safely</a>
+        
+    {% endif %}
+
+        <div class="container">
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggle">
+                <div class="navbar-nav mr-auto">
+
+                </div>
+            <!-- Navbar Right Side -->
+                <div class="navbar-nav">
+                    {% if user.is_authenticated %}
+                    <form action="{% url 'logout' %}">
+                        <input type="submit" value="Logout" class="btn btn-danger" />
+                    </form>
+
+                    <!-- <ul class="nav nav-pills">
+                        <li class="nav-item">
+                          <a class="nav-link active" href="{% url 'logout' %}">Logout</a>
+                        </li> -->
+                    {% else %}
+                    <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+                    <a class="nav-link" href="{% url 'admin:index' %}"> Admin Site </a>
+                    {% endif %}
+                </div>
+
+
+                
+            </div>
+        </div>
+    </nav>
+
+  </header>
+
+  
+
+
+
+
+
+
+ <main role="main" class="container">
+     <div class="row">
+         <div class="col-md-10">
+             {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+             {% endif %}
+
+             {% block content %}
+
+             {% endblock %}
+
+         </div>
+     </div>
+ </main>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+  </body>
+</html>

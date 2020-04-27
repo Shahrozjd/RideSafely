@@ -1,0 +1,53 @@
+
+  .sidebar {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    /* 0F111A */
+    background-color: #0F111A;
+    overflow-x: hidden;
+    padding-top: 16px;
+    box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  
+  .navnot
+  {
+    padding:25px;
+    font-size: 25px;
+    display: block;
+  }
+
+  /* Style sidebar links */
+  .navcontent {
+padding-top: 18px;
+
+padding-bottom: 18px;
+padding-left: 10px;
+    font-size: 18px;
+    text-align: left;
+    color: #ffffff;
+    border-bottom: 2px solid #455A64;
+    display: block;
+  }
+  
+  /* Style links on mouse-over */
+  .sidebar a:hover {
+      
+    color: #fdd835;
+
+  }
+  
+  /* Style the main content */
+  .main {
+    margin-left: 160px; /* Same as the width of the sidenav */
+    padding: 0px 10px;
+  }
+  
+  /* Add media queries for small screens (when the height of the screen is less than 450px, add a smaller padding and font-size) */
+  @media screen and (max-height: 450px) {
+    .sidebar {padding-top: 15px;}
+    .sidebar a {font-size: 18px;}
+  }
