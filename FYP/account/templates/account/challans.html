@@ -7,6 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'account/challanstyles.css' %}">
     <title>Document</title>
 </head>
 
@@ -14,8 +15,14 @@
 
     <div style="color:white;  background:#0F111A !important;box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" class="jumbotron" >
         <h1 style="color:white"  >Welcome to Challans</h1>
-        {{insert}}
-
+        {% for x in insert%}
+        <div class="list-group">
+            <form method="GET" >
+            <a name="challanid" href="#" class="list-group-item list-group-item-action"><strong>ID: {{x}}</strong></a>
+            
+            </form>  
+        </div>
+          {% endfor %}
     </div>
 
     

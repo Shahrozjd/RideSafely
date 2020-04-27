@@ -32,7 +32,12 @@ def home(request):
 
 def challans(request):
     msg = {"insert":valdata}
+    username = request.GET.get("username")
+    print("*****"+str(username))
     return render(request,'account/challans.html',context=msg)
 
+# def register(request):
+
+    
 
 
