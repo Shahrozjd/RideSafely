@@ -27,7 +27,12 @@ print("*****"+str(valdata))
 
 
 def home(request):
+    return render(request,'account/home.html')
+
+
+def challans(request):
     msg = {"insert":valdata}
-    return render(request,'account/home.html',context=msg)
+    return render(request,'account/challans.html',context=msg)
+
 
 
