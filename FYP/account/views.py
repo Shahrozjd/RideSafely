@@ -32,11 +32,14 @@ def home(request):
 
 def challans(request):
     msg = {"insert":valdata}
-    username = request.GET.get("username")
-    print("*****"+str(username))
     return render(request,'account/challans.html',context=msg)
 
-# def register(request):
+def showchallandata(request):
+    username = request.GET.get("challanid")
+    value = db.child("Challans").child(username).get()
+    valdata = dict(value.val())
+    msg = {"userchallan":valdata}
+    return render(request,'account/showchallandata.html',context=msg)
 
     
 

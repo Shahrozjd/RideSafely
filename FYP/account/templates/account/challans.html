@@ -17,8 +17,9 @@
         <h1 style="color:white"  >Welcome to Challans</h1>
         {% for x in insert%}
         <div class="list-group">
-            <form method="GET" >
-            <a name="challanid" href="#" class="list-group-item list-group-item-action"><strong>ID: {{x}}</strong></a>
+            <form method="GET" action="{% url 'showchallandata' %}">
+                
+                <input type="submit" name="challanid" value="{{x}}"  href="#" class="list-group-item list-group-item-action"></a>
             
             </form>  
         </div>

@@ -62,7 +62,7 @@ data = {
 
 # db.child("Challans").child(challanid).set(data)
 
-value = db.child("Challans").shallow().get()
+value = db.child("Challans").child("9163a").get()
 
-valdata = list(value.val())
+valdata = dict(value.val())
 print("*****"+str(valdata))
