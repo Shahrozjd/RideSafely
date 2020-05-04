@@ -2,19 +2,9 @@
 
 {% block content %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{% static 'account/challanstyles.css' %}">
-    <title>Document</title>
-</head>
 
-<body style="margin-left:15%" >
-
-    <div style="color:white;  background:#0F111A !important;box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" class="jumbotron" >
-        <h1 style="color:white"  >Welcome to Challans</h1>
+    <div class="content-section">
+        <h1>Challans</h1>
         {% for x in insert%}
         <div class="list-group">
             <form method="GET" action="{% url 'showchallandata' %}">
@@ -25,10 +15,5 @@
         </div>
           {% endfor %}
     </div>
-
-    
-    
-</body>
-</html>
 
 {% endblock %}
