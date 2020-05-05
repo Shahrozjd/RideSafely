@@ -3,6 +3,8 @@ from django.http import HttpResponse
 import pyrebase
 from subprocess import call
 from os import system
+import base64
+
 
 config = {
     "apiKey": "AIzaSyBfGWLK-_W_mwNUSskbyJdh1YPnHuhJM7U",
@@ -22,7 +24,7 @@ storage = firebase.storage()
 value = db.child("Challans").shallow().get()
 
 valdata = list(value.val())
-print("*****"+str(valdata))
+print("**ID'S**"+str(valdata))
 
 
 
@@ -38,6 +40,10 @@ def showchallandata(request):
     username = request.GET.get("challanid")
     value = db.child("Challans").child(username).get()
     valdata = dict(value.val())
+    # imgdata = base64.b64decode(valdata['IMAGE'])
+    # filename = "C:\\Users\\Shahroz Javed\\Desktop\\RideSafely\\RideSafely\\FYP\\account\\static\\account\\image"+value.val()['ChallanID']+".png"  
+    # with open(filename, 'wb') as f:
+    #     f.write(imgdata)s
     msg = {"userchallan":valdata}
     return render(request,'account/showchallandata.html',context=msg)
 

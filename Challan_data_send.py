@@ -52,17 +52,23 @@ data = {
     "Dateofissue":"1/4/2020",
     "DueDate":"1/8/2020",
     "PenaltyPoints":"1",
-    "Paid challan":"0",
-    "Unpaid Challan":"1",
-    "Challan Amount":"500PKR",
-    "IMAGE":str(image_str),
+    "Paidchallan":"0",
+    "UnpaidChallan":"1",
+    "ChallanAmount":"500PKR",
+    "IMAGE":str(image_str, 'utf-8'),
     "MAP":"LatLong"
 
 }
 
 # db.child("Challans").child(challanid).set(data)
 
-value = db.child("Challans").child("9163a").get()
+value = db.child("Challans").child("c028c").get()
 
-valdata = dict(value.val())
-print("*****"+str(valdata))
+# valdata = dict(value.val())
+# # print("ImageString : "+str(value.val()['IMAGE']))
+# # image_str = str(image_str, 'utf-8')
+# # print(image_str)
+# imgdata = base64.b64decode(valdata['IMAGE'])
+# filename = "C:\\Users\\Shahroz Javed\\Desktop\\RideSafely\\RideSafely\\sampleimage1.png"  
+# with open(filename, 'wb') as f:
+#     f.write(imgdata)
