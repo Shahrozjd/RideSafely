@@ -1,0 +1,17 @@
+{% extends 'account/base.html' %}
+
+{% block content %}
+{% load static %}
+
+<div class="content-section col-md-10">
+    <p>This graph represents the ratio of challans with respect to the last 12 Months.</p>
+       {{div| safe}}
+
+       <script type="text/javascript" src="http://cdn.pydata.org/bokeh/release/bokeh-2.0.2.min.js"></script>
+       <script type="text/javascript" src="http://cdn.pydata.org/bokeh/release/bokeh-widgets-2.0.2.min.js"></script>
+       <script type="text/javascript" src="http://cdn.pydata.org/bokeh/release/bokeh-tables-2.0.2.min.js"></script>
+       <script type="text/javascript" src="http://cdn.pydata.org/bokeh/release/bokeh-api-2.0.2.min.js"></script>
+
+       {{script | safe}}
+       {% endblock %}
+</div>

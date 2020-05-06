@@ -6,6 +6,8 @@ from os import system
 import base64
 
 
+
+
 config = {
     "apiKey": "AIzaSyBfGWLK-_W_mwNUSskbyJdh1YPnHuhJM7U",
     "authDomain": "ridesafely-e7c52.firebaseapp.com",
@@ -31,7 +33,18 @@ print("**ID'S**"+str(valdata))
 def home(request):
     return render(request,'account/home.html')
 
+#graphs started
+def graphs(request):
+    return render(request, 'account/graphs.html')
 
+def graph1(request):
+
+    script, div = components(p)
+    return render(request, 'account/graph1.html', {'script': script, 'div': div})
+
+#graphs ended
+
+#challans started
 def challans(request):
     msg = {"insert":valdata}
     return render(request,'account/challans.html',context=msg)
@@ -47,6 +60,7 @@ def showchallandata(request):
     msg = {"userchallan":valdata}
     return render(request,'account/showchallandata.html',context=msg)
 
+#challans ended
     
 
 
