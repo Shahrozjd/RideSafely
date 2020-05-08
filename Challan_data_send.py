@@ -60,9 +60,9 @@ data = {
 
 }
 
-# db.child("Challans").child(challanid).set(data)
+db.child("Challans").child(challanid).set(data)
 
-value = db.child("Challans").child("c028c").get()
+# value = db.child("Challans").child("c028c").get()
 
 # valdata = dict(value.val())
 # # print("ImageString : "+str(value.val()['IMAGE']))
