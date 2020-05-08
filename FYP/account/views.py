@@ -40,7 +40,7 @@ def graph1(request):
     labels = []
     data = []
 
-    queryset = City.objects.order_by('-challans')[:5]
+    queryset = City.objects.order_by('-challans')[:6]
     for city in queryset:
         labels.append(city.name)
         data.append(city.challans)
