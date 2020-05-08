@@ -1,0 +1,12 @@
+#intro {
+    background: url("bg-masthead.jpg")no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.mb{
+    text-align: center;
+    padding: 10%;
+}

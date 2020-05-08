@@ -2,5 +2,13 @@
 
 {% block content %}
 {% load static %}
-
+   <div id="intro" class="wrapper view">
+     <div class="mb">
+       <h1 style="font-family: cursive;font-size: 70px"><strong>Welcome!</strong></h1>
+       <h3 style="margin-bottom: 25px; font-family: cursive;font-size: 40px">Click any of the buttons to get to respective analysis chart!</h3>
+       <a style="background-color:#17a2b8; border:#17a2b8; margin-right:5px" href="{% url 'graph1' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Cities Ratio</a>
+       <a style="background-color:#17a2b8; border:#17a2b8;margin-right:5px" href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Challans Paid</a>
+       <a style="background-color:#17a2b8; border:#17a2b8;margin-right:5px" href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Accidents Ratio</a>
+     </div>
+   </div>
 {% endblock %}
