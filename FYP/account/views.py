@@ -5,8 +5,7 @@ from subprocess import call
 from os import system
 import base64
 
-
-
+from .models import City
 
 config = {
     "apiKey": "AIzaSyBfGWLK-_W_mwNUSskbyJdh1YPnHuhJM7U",
@@ -38,9 +37,18 @@ def graphs(request):
     return render(request, 'account/graphs.html')
 
 def graph1(request):
+    labels = []
+    data = []
 
-    script, div = components(p)
-    return render(request, 'account/graph1.html', {'script': script, 'div': div})
+    queryset = City.objects.order_by('-challans')[:5]
+    for city in queryset:
+        labels.append(city.name)
+        data.append(city.challans)
+
+    return render(request, 'account/graph1.html', {
+        'labels': labels,
+        'data': data,
+    })
 
 #graphs ended
 

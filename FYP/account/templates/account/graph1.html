@@ -2,16 +2,36 @@
 
 {% block content %}
 {% load static %}
-
 <div class="content-section col-md-10">
-    <p>This graph represents the ratio of challans with respect to the last 12 Months.</p>
-       {{div| safe}}
+ <h2>This pie chart shows the number of percent of challans which are conducted in every major city.</h2>
+ <div id="container" style="width: 100%;">
+    <canvas id="pie-chart"></canvas>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+  <script>
 
-       <script type="text/javascript" src="http://cdn.pydata.org/bokeh/release/bokeh-2.0.2.min.js"></script>
-       <script type="text/javascript" src="http://cdn.pydata.org/bokeh/release/bokeh-widgets-2.0.2.min.js"></script>
-       <script type="text/javascript" src="http://cdn.pydata.org/bokeh/release/bokeh-tables-2.0.2.min.js"></script>
-       <script type="text/javascript" src="http://cdn.pydata.org/bokeh/release/bokeh-api-2.0.2.min.js"></script>
+    var config = {
+      type: 'pie',
+      data: {
+        datasets: [{
+          data: {{ data|safe }},
+          backgroundColor: [
+            '#696969', '#808080', '#A9A9A9', '#C0C0C0', '#D3D3D3'
+          ],
+          label: 'Population'
+        }],
+        labels: {{ labels|safe }}
+      },
+      options: {
+        responsive: true
+      }
+    };
 
-       {{script | safe}}
-       {% endblock %}
-</div>
+    window.onload = function() {
+      var ctx = document.getElementById('pie-chart').getContext('2d');
+      window.myPie = new Chart(ctx, config);
+    };
+
+  </script>
+ </div>
+{% endblock %}
