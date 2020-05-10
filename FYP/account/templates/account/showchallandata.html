@@ -85,7 +85,7 @@
 						</table>
 					</div>
 					
-					<div id="googleMap" style="width:100%;height:400px;"></div>
+					<div  id="googleMap" style="width:100%;height:400px;"></div>
 	
 							<script>
 							function myMap() {
@@ -99,6 +99,16 @@
 	
 							<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6Oq6rojVUFvknI9FAnXD1glV8963HS6U&callback=myMap"></script>
 				</div> 
+			</div>
+			<div style="margin-top: 25px;" >
+			<form method="GET" action="{% url 'challans' %}"  
+			onsubmit="return confirm('Do you really want to DELETE this Challan');" >
+
+				  <div class="col-12 col-md-3">
+					<button onclick="myFunction()" type="submit" name="id_to_dlt" value="{{userchallan.ChallanID}}"  class="btn btn-danger">Delete</button>
+				  </div>
+
+			  </form>
 			</div>
 		</div>
 

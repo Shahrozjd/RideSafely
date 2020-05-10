@@ -22,10 +22,7 @@ db = firebase.database()
 auth = firebase.auth()
 storage = firebase.storage()
 
-value = db.child("Challans").shallow().get()
 
-valdata = list(value.val())
-print("**ID'S**"+str(valdata))
 
 
 
@@ -73,6 +70,11 @@ def graph2(request):
 
 #challans started
 def challans(request):
+    idTodlt = request.GET.get("id_to_dlt")
+    if idTodlt:
+        db.child("Challans").child(idTodlt).remove()
+    value = db.child("Challans").shallow().get()
+    valdata = list(value.val())        
     msg = {"insert":valdata}
     return render(request,'account/challans.html',context=msg)
 
