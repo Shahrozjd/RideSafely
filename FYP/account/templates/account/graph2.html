@@ -1,0 +1,41 @@
+{% extends 'account/base.html' %}
+
+{% block content %}
+{% load static %}
+<div class="content-section col-md-10">
+ <h2>This pie chart shows the number of percent of challans which are conducted in every major city.</h2>
+ <div id="container" style="width: 100%;">
+   <canvas id="bar-chart-grouped" width="800" height="450"></canvas>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+ <script>
+
+
+new Chart(document.getElementById("bar-chart-grouped"), {
+    type: 'bar',
+    data: {
+      labels: {{labels|safe}},
+      datasets: [
+        {
+          label: "",
+          backgroundColor: "#3e95cd",
+          data: {{data1|safe}}
+        }, {
+          label: "",
+          backgroundColor: "#8e5ea2",
+          data:{{data2|safe}}
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Paid and Unpaid Challans'
+      }
+    }
+});
+
+
+  </script>
+ </div>
+{% endblock %}

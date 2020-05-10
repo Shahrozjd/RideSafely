@@ -5,7 +5,7 @@ from subprocess import call
 from os import system
 import base64
 
-from .models import City
+from .models import City, due
 
 config = {
     "apiKey": "AIzaSyBfGWLK-_W_mwNUSskbyJdh1YPnHuhJM7U",
@@ -34,7 +34,7 @@ def home(request):
 
 #graphs started
 def graphs(request):
-    return render(request, 'account/graphs.html')
+    return render(request,'account/graphs.html')
 
 def graph1(request):
     labels = []
@@ -48,6 +48,25 @@ def graph1(request):
     return render(request, 'account/graph1.html', {
         'labels': labels,
         'data': data,
+    })
+
+def graph2(request):
+    labels = []
+    data1 = []
+    data2=[]
+
+    queryset = due.objects.order_by('-paid')[:10]
+    for Due in queryset:
+        labels.append(Due.months)
+        data1.append(Due.paid)
+        data2.append(Due.unpaid)
+
+
+
+    return render(request, 'account/graph2.html',{
+        'data1':data1,
+    'data2':data2,
+        'labels':labels
     })
 
 #graphs ended

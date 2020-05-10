@@ -7,4 +7,5 @@ urlpatterns = [
     path('showchallandata/',views.showchallandata, name='showchallandata'),
     path('graphs/', views.graphs, name='graphs'),
     path('graph1/', views.graph1, name='graph1'),
+    path('graph2/', views.graph2, name='graph2'),
 ]
