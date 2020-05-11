@@ -39,13 +39,13 @@ challanid = var[:5]
 citizenid = var[5:10]
 data = {
     
-    "ChallanID":challanid,
+    "ChallanID":'06521',
     "CitizenID":citizenid,
     "Name":"Usman",
     "Address":"FSD,Punjab",
     "MOBILE":"0382423423",
     "CNIC":"3310023425455",
-    "LiceneseNo":"FDR 9832",
+    "LiceneseNo":"FDR 1234",
     "Make":"Cd 70",
     "Color":"red",
     "Chassis":"435jdkjf454",
@@ -55,16 +55,14 @@ data = {
     "Paidchallan":"0",
     "UnpaidChallan":"1",
     "ChallanAmount":"500PKR",
-    "IMAGE":str(image_str, 'utf-8'),
-    "MAP":"LatLong"
-
 }
 
-db.child("Challans").child(challanid).set(data)
+db.child("Challans").child('06521').update(data)
 
-# value = db.child("Challans").child("c028c").get()
+# value = db.child("Challans").child("06521").get()
 
 # valdata = dict(value.val())
+# print(valdata['Address'])
 # # print("ImageString : "+str(value.val()['IMAGE']))
 # # image_str = str(image_str, 'utf-8')
 # # print(image_str)

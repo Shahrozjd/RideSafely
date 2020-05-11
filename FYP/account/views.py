@@ -3,6 +3,7 @@ from django.http import HttpResponse
 import pyrebase
 from subprocess import call
 from os import system
+from . import updform
 import base64
 
 from .models import City, due
@@ -91,5 +92,56 @@ def showchallandata(request):
 
 #challans ended
     
+#update challan form
+def updateform(request):
+    form = updform.upd_form()
+    username = request.GET.get("id_to_updt")
+    value = db.child("Challans").child(username).get()
+    valdata = dict(value.val())
+    form.fields["name"].initial = valdata['Name']
+    form.fields["challanid"].initial = valdata['ChallanID']
+    form.fields["citizenid"].initial = valdata['CitizenID']
+    form.fields["challanamount"].initial = valdata['ChallanAmount']
+    form.fields["cnic"].initial = valdata['CNIC']
+    form.fields["address"].initial = valdata['Address']
+    form.fields["mobile"].initial = valdata['MOBILE']
+    form.fields["duedate"].initial = valdata['DueDate']   
+    form.fields["issuedate"].initial = valdata['Dateofissue']
+    form.fields["liceneseno"].initial = valdata['LiceneseNo']
+    form.fields["chasis"].initial = valdata['Chassis']
+    form.fields["color"].initial = valdata['Color']
+    form.fields["make"].initial = valdata['Make']
+    form.fields["paidchallan"].initial = valdata['Paidchallan']
+    form.fields["unpaidchallan"].initial = valdata['UnpaidChallan']
+    form.fields["penaltypoint"].initial = valdata['PenaltyPoints']
+    
+    msg = {'form':form}
+    if(request.method == 'POST'):
+        form = updform.upd_form(request.POST)
+        if form.is_valid():
+            data = {
+    
+                    "ChallanID":form.cleaned_data['challanid'],
+                    "CitizenID":form.cleaned_data['citizenid'],
+                    "Name":form.cleaned_data['name'],
+                    "Address":form.cleaned_data['address'],
+                    "MOBILE":form.cleaned_data['mobile'],
+                    "CNIC":form.cleaned_data['cnic'],
+                    "LiceneseNo":form.cleaned_data['liceneseno'],
+                    "Make":form.cleaned_data['make'],
+                    "Color":form.cleaned_data['color'],
+                    "Chassis":form.cleaned_data['chasis'],
+                    "Dateofissue":form.cleaned_data['issuedate'],
+                    "DueDate":form.cleaned_data['duedate'],
+                    "PenaltyPoints":form.cleaned_data['penaltypoint'],
+                    "Paidchallan":form.cleaned_data['paidchallan'],
+                    "UnpaidChallan":form.cleaned_data['unpaidchallan'],
+                    "ChallanAmount":form.cleaned_data['challanamount'],
+
+                    }
+            db.child("Challans").child(username).update(data)
+            print("Validation Done") 
+    
+    return render(request,'account/updateform.html',context=msg)    
 
 

@@ -1,0 +1,17 @@
+{% extends 'account/base.html' %}
+{% block content %}
+{% load static %}
+
+
+<div class="jumbotron">
+    <h4>Update Challan Form</h4><br>
+
+    <form method="POST" onsubmit="return confirm('Do you want to commit Changes to form?');">
+    
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+     
+</div>
+{% endblock %}
