@@ -29,6 +29,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'admin_interface',
+    'colorfield',
     'account.apps.AccountConfig',
     'users.apps.UsersConfig',
     'crispy_forms',
