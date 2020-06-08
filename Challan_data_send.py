@@ -14,7 +14,7 @@ import base64
 #     f.write(imgdata)
 
 #Image to String
-with open("E:\\vsDjango\\sampleimage\\frame749.jpg", "rb") as imageFile:
+with open("E:\\vsDeepLearning\\Fyp_data\\Dataset\\frame1137.jpg", "rb") as imageFile:
     image_str = base64.b64encode(imageFile.read())
     
     
@@ -39,16 +39,16 @@ challanid = var[:5]
 citizenid = var[5:10]
 data = {
     
-    "ChallanID":'06521',
+    "ChallanID":challanid,
     "CitizenID":citizenid,
-    "Name":"Usman",
+    "Name":"Azeem",
     "Address":"FSD,Punjab",
-    "MOBILE":"0382423423",
-    "CNIC":"3310023425455",
-    "LiceneseNo":"FDR 1234",
+    "MOBILE":"03243534565",
+    "CNIC":"3310075687878",
+    "LiceneseNo":"FDR 4564",
     "Make":"Cd 70",
     "Color":"red",
-    "Chassis":"435jdkjf454",
+    "Chassis":"56454jkj4kl5j",
     "Dateofissue":"1/4/2020",
     "DueDate":"1/8/2020",
     "PenaltyPoints":"1",
@@ -57,7 +57,10 @@ data = {
     "ChallanAmount":"500PKR",
 }
 
-db.child("Challans").child('06521').update(data)
+db.child("Challans").child(challanid).set(data)
+print("DONE")
+
+# db.child("Challans").child('06521').update(data)
 
 # value = db.child("Challans").child("06521").get()
 
