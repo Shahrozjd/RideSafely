@@ -27,7 +27,22 @@
 
 </head>
 
+
 <body>
+
+  {% if messages %}
+        {% for message in messages %}
+            <script>
+              alert('{{ message }}');
+            </script>
+        {% endfor %}
+  {% endif %}
+
+  <!-- {% if getalert %}
+    <script>
+      alert('{{ getalert }}');
+    </script>
+  {% endif %} -->
 
   <!-- Navigation -->
   <nav class="navbar navbar-dark bg-dark static-top">

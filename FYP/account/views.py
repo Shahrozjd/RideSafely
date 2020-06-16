@@ -1,12 +1,14 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 import pyrebase
 from subprocess import call
+from django.contrib.auth.decorators import login_required
 from os import system
 from . import updform
 import base64
 
 from .models import City, due
+from django.contrib import messages
 
 config = {
     "apiKey": "AIzaSyBfGWLK-_W_mwNUSskbyJdh1YPnHuhJM7U",
@@ -31,9 +33,11 @@ def home(request):
     return render(request,'account/home.html')
 
 #graphs started
+@login_required
 def graphs(request):
     return render(request,'account/graphs.html')
 
+@login_required
 def graph1(request):
     labels = []
     data = []
@@ -47,7 +51,8 @@ def graph1(request):
         'labels': labels,
         'data': data,
     })
-
+    
+@login_required
 def graph2(request):
     labels = []
     data1 = []
@@ -70,6 +75,7 @@ def graph2(request):
 #graphs ended
 
 #challans started
+@login_required
 def challans(request):
     idTodlt = request.GET.get("id_to_dlt")
     if idTodlt:
@@ -82,13 +88,19 @@ def challans(request):
 def showchallandata(request):
     username = request.GET.get("challanid")
     value = db.child("Challans").child(username).get()
-    valdata = dict(value.val())
-    # imgdata = base64.b64decode(valdata['IMAGE'])
-    # filename = "C:\\Users\\Shahroz Javed\\Desktop\\RideSafely\\RideSafely\\FYP\\account\\static\\account\\image"+value.val()['ChallanID']+".png"  
-    # with open(filename, 'wb') as f:
-    #     f.write(imgdata)s
-    msg = {"userchallan":valdata}
-    return render(request,'account/showchallandata.html',context=msg)
+    if(not value.val()):
+        print("*******GADISH********")
+        messages.info(request, 'No Challan found for this ID')
+        return HttpResponseRedirect('/')
+        # return render(request,'account/home.html',context=msg)
+    else:    
+        valdata = dict(value.val())
+        # imgdata = base64.b64decode(valdata['IMAGE'])
+        # filename = "C:\\Users\\Shahroz Javed\\Desktop\\RideSafely\\RideSafely\\FYP\\account\\static\\account\\image"+value.val()['ChallanID']+".png"  
+        # with open(filename, 'wb') as f:
+        #     f.write(imgdata)s
+        msg = {"userchallan":valdata}
+        return render(request,'account/showchallandata.html',context=msg)
 
 #challans ended
     
