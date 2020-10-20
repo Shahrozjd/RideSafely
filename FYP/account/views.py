@@ -87,9 +87,13 @@ def challans(request):
 
 def showchallandata(request):
     username = request.GET.get("challanid")
+    if(not username):
+        print("*******KABOOM********")
+        messages.info(request, 'Please Enter challan id')
+        return HttpResponseRedirect('/')
     value = db.child("Challans").child(username).get()
     if(not value.val()):
-        print("*******GADISH********")
+        print("*******KABOOM********")
         messages.info(request, 'No Challan found for this ID')
         return HttpResponseRedirect('/')
         # return render(request,'account/home.html',context=msg)
